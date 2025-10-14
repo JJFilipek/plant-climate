@@ -355,13 +355,6 @@ public class MonitorView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLayout(new BorderLayout());
-        
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                client.close();
-            }
-        });
 
         // Lewy panel z listą czujników
         JPanel leftPanel = createLeftPanel();
@@ -594,6 +587,23 @@ public class MonitorView extends JFrame {
         basicDataPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         return basicDataPanel;
+    }
+    
+    /**
+     * Zwalnia zasoby przy zamknięciu okna.
+     */
+    @Override
+    public void dispose() {
+        if (chartPanel != null) {
+            chartPanel.dispose();
+        }
+        
+        try {
+            client.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.dispose();
     }
 
     /**

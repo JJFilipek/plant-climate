@@ -37,7 +37,7 @@ public class ClientListener extends Thread {
     }
 
     /**
-     * Obsługuje pojedyncze połączenie z klilentem.
+     * Obsługuje pojedyncze połączenie z klientem.
      * Ustanawia komunikację, identyfikuje klienta i przetwarza jego polecenia.
      *
      * @param s gniazdo połączenia z klientem

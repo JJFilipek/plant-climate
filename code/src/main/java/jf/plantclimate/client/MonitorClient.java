@@ -86,9 +86,7 @@ public class MonitorClient {
                     processServerResponse(line);
                 }
             } catch (IOException e) {
-                if (connected) {
-                    System.err.println("Błąd nasłuchiwania: " + e.getMessage());
-                }
+                System.err.println("Błąd nasłuchiwania: " + e.getMessage());
             } finally {
                 close();
             }
@@ -539,7 +537,7 @@ public class MonitorClient {
     }
 
     /**
-     * Wczytuje sparowane czujniki z pliku, deserializując je.
+     * Wczytuje sparowane czujniki z pliku
      */
     private void loadPairedSensors() {
         File file = new File(PAIRED_SENSORS_FILE);
@@ -555,7 +553,7 @@ public class MonitorClient {
     }
 
     /**
-     * Zapisuje sparowane czujniki do plku, serializując je.
+     * Zapisuje sparowane czujniki do plku.
      */
     private void savePairedSensors() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PAIRED_SENSORS_FILE))) {

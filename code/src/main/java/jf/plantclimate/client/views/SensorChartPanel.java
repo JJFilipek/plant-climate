@@ -335,4 +335,11 @@ public class SensorChartPanel extends JPanel {
             default -> "Wartość";
         };
     }
+    
+    /**
+     * Zwalnia zasoby przy zamknięciu panelu
+     */
+    public void dispose() {
+        stopAutoRefresh();
+    }
 }
